@@ -2,7 +2,7 @@
 
 **SignalReport** is a high-performance, AI-driven news intelligence platform designed to cut through the noise of the modern information landscape. Using cutting-edge LLMs and real-time news ingestion, it provides deep analysis, credibility scoring, and interactive contextual intelligence.
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.13%2B-blue.svg)
 ![React](https://img.shields.io/badge/react-18.x-61DAFB.svg)
 
@@ -10,28 +10,28 @@
 
 ## ✨ Key Features
 
-- **Real-Time Intelligence**: Automated news ingestion via GNews API with support for global headlines.
-- **AI Deep Analysis**: Multi-paragraph intelligence reports powered by **Groq (Llama 3.3 70B)** for lightning-fast inference.
+- **Real-Time Intelligence**: Automated news ingestion via GNews API with support for global headlines and specific technical categories.
+- **AI Deep Analysis**: Multi-paragraph intelligence reports powered by **Groq (Llama 3.3 70B)** for lightning-fast inference and deep semantic understanding.
 - **Interactive Digest**:
-  - **Contextual Q&A**: Ask follow-up questions about any news article.
-  - **Smart Glossary**: Highlight terms to get general definitions blended with news-specific context.
-- **Credibility Scoring**: Automated AI assessment of source reliability and content integrity.
-- **Premium UI/UX**: Responsive, glassmorphic dashboard built for visual excellence and mobile-first accessibility.
-- **Semantic Search**: Vector-ready architecture for future RAG (Retrieval-Augmented Generation) enhancements.
+  - **Contextual Q&A**: Ask follow-up questions about any news article using RAG-ready context.
+  - **Smart Glossary**: Highlight complex terms to get general definitions blended with real-time news context.
+- **Credibility Scoring**: Automated AI assessment of source reliability, sentiment, and content integrity.
+- **Premium UI/UX**: Responsive, glassmorphic dashboard built for visual excellence, micro-animations, and mobile-first accessibility.
+- **Semantic Search**: Vector-ready architecture for advanced knowledge retrieval and intelligence mapping.
 
 ---
 
 ## 🛠️ Tech Stack
 
-### Backend
+### Backend (The Core)
 - **Framework**: Django 5.0 (Python 3.13)
 - **AI Engine**: Groq SDK (Llama 3.3 / 8B)
-- **Database**: MySQL (for primary storage)
-- **Processing**: Async task handling for news ingestion and AI enhancement.
+- **Database**: MySQL 8.0 (Enterprise-ready storage)
+- **NLP**: Custom processing for entity extraction and sentiment analysis.
 
-### Frontend
+### Frontend (The Interface)
 - **Framework**: React + Vite
-- **Styling**: Vanilla CSS (Custom Design System)
+- **Styling**: Vanilla CSS (Custom Design System with Glassmorphism)
 - **Icons**: Lucide-React
 - **State Management**: React Hooks & Context API
 
@@ -89,27 +89,29 @@ Create a `.env` file in the `backend/` directory with the following:
 DB_NAME=your_db_name
 DB_USER=your_db_user
 DB_PASSWORD=your_db_password
-DB_HOST=127.0.0.1
-DB_PORT=3306
+DB_HOST=your_db_host
+DB_PORT=your_db_port
 
 # APIs
-GNEWS_API_KEY=your_gnews_key
-GROQ_API_KEY=your_groq_key
-GEMINI_API_KEY=your_gemini_key
+GNEWS_API_KEY=Keep your APIs here
+GROQ_API_KEY=Keep your APIs here
+GEMINI_API_KEY=Keep your APIs here
 
 # Django
-SECRET_KEY=your_secret_key
+SECRET_KEY=your_django_secret_key_here
 DEBUG=True
+ALLOWED_HOSTS=your_domain.com,localhost
 ```
 
 ---
 
 ## 🛡️ Security & Privacy
 - **Environment Safety**: All API keys and database credentials are excluded from version control via `.gitignore`.
-- **Authentication**: JWT-based authentication for secure access to intelligence reports.
+- **Zero-Trust Ready**: JWT-based authentication for secure access to intelligence reports.
+- **Data Integrity**: Automated validation of incoming news sources and content.
 
 ## 📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the **Apache License 2.0** - see the LICENSE file for details.
 
 ---
 
