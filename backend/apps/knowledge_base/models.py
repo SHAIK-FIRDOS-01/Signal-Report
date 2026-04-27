@@ -1,0 +1,58 @@
+from django.db import models
+from django.utils.translation import gettext_lazy as _
+
+class EmbeddingStatus(models.TextChoices):
+    PENDING = 'PENDING', _('Pending')
+    PROCESSING = 'PROCESSING', _('Processing')
+    COMPLETED = 'COMPLETED', _('Completed')
+    FAILED = 'FAILED', _('Failed')
+
+class KnowledgeBaseNode(models.Model):
+    """
+    RAG Foundation Model representing an ingested and processed news article.
+    """
+    title = models.CharField(max_length=500)
+    source_url = models.URLField(max_length=500, unique=True)
+    published_at = models.DateTimeField(null=True, blank=True)
+    category = models.CharField(max_length=100, default='General', db_index=True)
+    
+    # Content Fields
+    content_raw = models.TextField(help_text=_("Original unedited snippet from the source"))
+    full_text_scraped = models.TextField(blank=True, null=True, help_text=_("Complete article body extracted by the scraper"))
+    content_processed = models.TextField(blank=True, null=True, help_text=_("Cleaned and AI-enhanced summary/analysis"))
+    
+    # RAG specific fields
+    embedding_status = models.CharField(
+        max_length=20,
+        choices=EmbeddingStatus.choices,
+        default=EmbeddingStatus.PENDING
+    )
+    
+    # Vector Field - using MySQL Native JSON Data Type
+    embedding_vector = models.JSONField(
+        blank=True, 
+        null=True, 
+        help_text=_("Vector representation for RAG using MySQL JSON")
+    )
+    
+    # Quality & Reliability
+    source_credibility_score = models.FloatField(
+        default=0.0, 
+        help_text=_("Calculated credibility score from NLP/AI processing")
+    )
+    
+    # Auditing / Fallback
+    fail_reason = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = 'kb_node'
+        ordering = ['-published_at']
+        indexes = [
+            models.Index(fields=['embedding_status']),
+            models.Index(fields=['published_at']),
+        ]
+
+    def __str__(self):
+        return f"[{self.embedding_status}] {self.title[:50]}"
