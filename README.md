@@ -1,4 +1,4 @@
-# SignalReport 🛰️
+# SignalReport | Enterprise AI News Analyst 🛰️
 
 **SignalReport** is an enterprise-grade AI news intelligence platform that transforms raw information into actionable insights. By leveraging advanced large language models and real-time data ingestion, SignalReport provides a sophisticated lens through which to view and analyze the global news cycle.
 
